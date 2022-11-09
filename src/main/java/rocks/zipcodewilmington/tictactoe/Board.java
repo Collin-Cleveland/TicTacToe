@@ -7,54 +7,39 @@ public class Board {
     boolean result = false;
     private Character [][] board;
     public Board(Character[][] matrix) { board = matrix; }
-    public boolean isWinHorizontal(char letter){
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board.length; j++){
-                if (board[i][j] != letter){
-                    break;
-                }
-                else if (i == board.length - 1){
-                    return result = true;
-                }
-            }
-        }
-        return false;
-    }
-
     public boolean isWinVertical(char letter){
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board.length; j++){
-                if (board[i][j] != letter){
-                    break;
-                }
-                else if (j == board.length - 1){
-                    return result = true;
-                }
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j <= 0; j++){
+                if (board[j][i].equals(letter) && board[j+1][i].equals(letter) && board[j+2][i].equals(letter)){
+                    result = true;
             }
         }
-        return false;
     }
+        return result;
+}
 
-    public boolean isWinDiagonal(char letter){
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board.length; j++){
-                if (i == j && i == letter && j == letter){
-                    return result = true;
-                }
+    public boolean isWinHorizontal(char letter){
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j <= 0; j++){
+                if (board[i][j].equals(letter) && board[i][j+1].equals(letter) && board[i][j+2].equals(letter)) {
+                    result = true;
             }
         }
-        return false;
+    }
+        return result;
+}
+    public boolean isWinDiagonal(char letter){
+        if (board[0][0].equals(letter) && board[1][1].equals(letter) && board[2][2].equals(letter)){
+            result = true;
+        }
+        return result;
     }
 
     public boolean isWinOppositeDiagonal(char letter){
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board.length; j++){
-                if ((i + j == board.length - 1) && i == letter && j == letter){
-                    return result = true;
+        if (board[0][2].equals(letter) && board[1][1].equals(letter) && board[2][0].equals(letter)){
+            result = true;
                 }
-            }
-        }
-        return false;
+        return result;
     }
 
     public Boolean isInFavorOfX() {
